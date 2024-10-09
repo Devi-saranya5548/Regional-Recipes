@@ -1,0 +1,236 @@
+\documentclass{beamer}
+%\documentclass{article}
+%\setlength{\parskip}{5pt}
+\usepackage{graphicx}
+\usetheme{Copenhagen}
+%\usepackage{color}
+\usecolortheme{beaver}
+\setbeamersize{text margin left = 5mm, text margin right = 5mm}
+\setbeamertemplate{frametitle}[default][left, leftskip = 5mm]
+\usepackage{ragged2e}\justifying
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+\nonumber
+\logo{\includegraphics[scale=0.25]{logo_ cut.png}}
+
+\setbeamertemplate{footline}{   
+    \leavevmode
+    \hbox{
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}
+        \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.40333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}
+        \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.253333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}
+        \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+    \end{beamercolorbox}
+    }
+    }
+    
+\title{REGIONAL RECIPES}
+\author[Team - 1]{}
+\date{}
+
+
+\begin{document}
+
+\begin{frame}[t]{}
+
+    \centering\Large \textbf{SHRI VISHNU ENGINEERING COLLEGE FOR WOMEN} \\ \vfill \Large \textbf{\textit{REGIONAL RECIPE}}
+    \vfill
+    \large\begin{table}[b]
+       \begin{tabular}[c]{ccc}
+        \textbf{Reg No} & \textbf{Name} & \textbf{Job Profile} \\ \hline
+        22B01A42A9 & Vasavika T & Developer \\
+        22B01A42A3 & Saniyah Sd & LaTeX designer\\
+        22B01A4284 & Prajwala P & LaTeX designer\\
+        22B01A4265 & Saranya M.D & Developer\\
+        22B01A4281 &  Satya Tejaswini P & GIT Administrator \\
+    \end{tabular} 
+    
+    %\caption{Team Details}
+    \label{tab:my_label h}
+\end{table}
+\end{frame}
+
+
+\begin{frame}{\textbf{INTRODUCTION}}
+    \begin{itemize}
+        \item  We have made an app named \textit{"Regional Recipes"}.
+        \item  This app is based on the famous recipes of India.
+        \item And we also provide the making process of famous recipes of India.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{OVERVIEW OF THE APP}}
+    \begin{itemize}
+        \item This app consists of a starting page with a next button.
+        \item After clicking next button, it will load into a Login/Sign Up page.
+        \item If the user is new to the app, they can sign up, or if they already have an account, they can login by entering their credentials .
+        \item Next page contains India map, the user can select a state to know about the famous recipes of that state.
+     \end{itemize}
+\end{frame}
+\begin{frame}{ \textbf{OVERVIEW OF THE APP}}
+    \begin{itemize}
+        \item After selecting the state, it will load into the next page and display all the famous recipes of that state.
+        \item According to the user selection, they can select any recipe from the list.
+        \item When user selects the recipe from the list , then app displays the ingredients and making process of that recipe.
+    \end{itemize}
+\end{frame}
+
+
+
+\tikzstyle{block} = [rectangle, draw, text width = 3.2 cm, text centered, minimum height=2.8mm]
+\tikzstyle{line} = [draw, -latex']
+
+\begin{frame}{\textbf{DATA FLOW DIAGRAM}}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance = 1.6cm, auto]
+
+    \node [block] (user) {User};
+    \node [block, below of=user] (India Map) {India Map};
+    \node [block, below of=India Map] (Select State) {Select State};
+    \node [block, below of=Select State] (recipe) {Recipe};
+    \node [block, right of=Select State, node distance=5cm] (database) {Database};
+    \node [block, below of=recipe] (display) {Display};
+
+    \path [line] (user) -- (India Map);
+    \path [line] (user) -- (database);
+    \path [line] (India Map) -- (Select State);
+    \path [line] (Select State) -- (recipe);
+    \path [line] (recipe) -- (display);
+    \path [line] (recipe) -- (database);
+\end{tikzpicture}
+\caption{DFD for Regional Recipe App}
+\end{figure}
+
+\end{frame}
+
+%structure of the app starts here
+
+\begin{frame}[t]{\textbf{START PAGE}}
+    \begin{columns}
+        \column{0.5\linewidth}
+        \begin{itemize}
+            \item The starting page of the app displays like this.
+            \item App name \textbf{Regional Recipes} is displayed.
+            \item Bottom to the name of the app, there is a button called \textbf{"next"}.
+            \item Clicking this button loads to another page.
+        \end{itemize}
+        \column{0.5\linewidth}
+        \includegraphics[width=1\textwidth, right]{start.jpg}
+        \centering\caption{Start Page}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{\textbf{SIGNUP/LOGIN PAGE}}
+    \begin{columns}
+         \column{0.5\linewidth}
+            \begin{itemize}
+                    \item If the user is new to the app, then they have to give their email address and set up a username and a password to create an account.
+                     \item If the user has already signed up in  the past, then they can directly login in to their account as it is stored in the database.
+            \end{itemize}
+        \column{0.5\linewidth}
+        \includegraphics[width = 1\textwidth]{login_signup.jpg}
+        \centering\caption{Signup/Login Page}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{\textbf{SELECT STATE}}
+    \begin{columns}
+        \column{0.5\linewidth}
+        \begin{itemize}
+            \item  After the Logging into the account, the next page that is displayed is the \textbf{India map} with labels.
+        \item Every state has its own labels.
+        \item Click on the label of a state for the recipe list.
+        \end{itemize}
+        \column{0.5\linewidth}
+        \includegraphics[width=1\textwidth]{map.jpg}
+        \centering\caption{Selecting  State}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{\textbf{RECIPE/RECOMMENDED LIST}}
+    \begin{columns}
+        \column{0.5\linewidth}
+        \begin{itemize}
+            \item After clicking on the label of a particular state, it will display the next page like the shown image.
+         \item It consists of \textbf{Recipes list} where the famous recipes are available.
+         \item \textbf{Recommended list} contains the recipes that are mostly recommended to try.
+        \end{itemize}
+        \column{0.5\linewidth}
+        \includegraphics[width=1\textwidth]{list.jpg}
+        \centering\caption{Recipe/Recommended List}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{\textbf{RECIPE LIST }}
+    \begin{columns}
+        \column{0.5\linewidth}
+        \begin{itemize}
+            \item \textbf{RECIPE LIST}
+            \item If the user selects the Recipes List, then it displays the list of recipes of that particular state.
+        \end{itemize}
+        \column{0.5\linewidth}
+        \includegraphics[width=1\textwidth]{rep_list.jpg}
+        \centering\caption{Recipe List}
+    \end{columns}
+        
+\end{frame}
+
+\begin{frame}{ \textbf{RECOMMENDED LIST}}
+    \begin{columns}
+        \column{0.5\linewidth}
+        \begin{itemize}
+        \item \textbf{RECOMMENDED LIST}
+        \item  If the user selects the Recommended List, then it displays the must try recipes of that particular state.
+        \end{itemize}
+        \column{0.5\linewidth}
+        \includegraphics[width=1\textwidth]{rec_list.jpg}
+        \centering\caption{Recommended List}
+    \end{columns}
+    
+\end{frame}
+
+\begin{frame}{\textbf{INGREDIENTS AND PREPARATION LIST}}
+    \begin{columns}
+        \column{0.5\linewidth}
+        \begin{itemize}
+        \item  When the user selects the particular recipe either from recipe or recommended list the it displays the ingredients and preparation steps of that particular recipe.
+        \end{itemize}
+        \column{0.5\linewidth}
+        \includegraphics[width=1.1\textwidth]{ing2.jpg}
+        \centering\caption{Ingredients List}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{\textbf{CONCLUSION}}
+        In conclusion, our app features must-try recipes from every state in India, allowing users worldwide to explore regional cuisines. With a variety of famous dishes and user-recommended favorites, choosing what to cook is made easy. Simply log in, select a state from the map, and discover delicious recipes from the comfort of home.
+\end{frame}
+\begin{frame}[c]{\textbf{BIBOLOGRAPHY}}
+ For completing our project,we have taken help from the following website\vspace{1cm}
+ \textbf{REFERENCES:} \vspace{0.2cm}
+    \begin{enumerate}
+        \begin{itemize}
+            \item https://docs.python.org/3/library/tk.html
+            \item Bard AI 
+        \end{itemize}
+         
+        
+        
+    \end{enumerate}
+    
+\end{frame}
+
+
+\end{document}
+
+
+
